@@ -7,9 +7,11 @@ const DesignPage = ({ selectedColorPalette }) => {
   const [selectedLayout, setSelectedLayout] = useState('');
   const [customLayoutInfo, setCustomLayoutInfo] = useState('');
   const [palette, setPalette] = useState([]);
+  const [selectedFont, setSelectedFont] = useState('');
+
+  const fontOptions = ['Poppins', 'Roboto', 'Lato', 'Montserrat', 'Arial'];
 
   useEffect(() => {
-    // Retrieve selected palette from session storage if page reloads
     const storedPalette = JSON.parse(sessionStorage.getItem('selectedPalette'));
     if (storedPalette) {
       setPalette(storedPalette);
@@ -18,7 +20,7 @@ const DesignPage = ({ selectedColorPalette }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Layout: ${selectedLayout === 'Other' ? customLayoutInfo : selectedLayout}, Palette: ${palette}`);
+    alert(`Layout: ${selectedLayout === 'Other' ? customLayoutInfo : selectedLayout}, Palette: ${palette}, Font: ${selectedFont}`);
   };
 
   return (
@@ -31,7 +33,17 @@ const DesignPage = ({ selectedColorPalette }) => {
         </button>
       </div>
 
-      {/* Display selected color palette */}
+      {/* Font Selection */}
+      <div className="form-section">
+        <label htmlFor="fontFamily">Choose a font family:</label>
+        <select id="fontFamily" className="styled-select" value={selectedFont} onChange={(e) => setSelectedFont(e.target.value)}>
+          <option value="">Select a font</option>
+          {fontOptions.map((font, index) => (
+            <option key={index} value={font}>{font}</option>
+          ))}
+        </select>
+      </div>
+
       {palette.length > 0 && (
         <div className="selected-palette">
           <h3>Selected Color Palette:</h3>
@@ -44,9 +56,9 @@ const DesignPage = ({ selectedColorPalette }) => {
       )}
 
       <form onSubmit={handleSubmit}>
-        <div className="form-section">
+        <div className="form-section layout-section">
           <label htmlFor="layoutTemplate">Choose a layout template:</label>
-          <select id="layoutTemplate" value={selectedLayout} onChange={(e) => setSelectedLayout(e.target.value)}>
+          <select id="layoutTemplate" className="styled-select layout-dropdown" value={selectedLayout} onChange={(e) => setSelectedLayout(e.target.value)}>
             <option value="">Select a layout</option>
             <option value="Travel">Travel</option>
             <option value="Fitness">Fitness</option>
@@ -62,6 +74,7 @@ const DesignPage = ({ selectedColorPalette }) => {
             <label htmlFor="customLayoutInfo">Describe your desired layout:</label>
             <textarea
               id="customLayoutInfo"
+              className="styled-textarea"
               value={customLayoutInfo}
               onChange={(e) => setCustomLayoutInfo(e.target.value)}
               placeholder="Provide additional information about your website layout..."
@@ -70,7 +83,7 @@ const DesignPage = ({ selectedColorPalette }) => {
           </div>
         )}
 
-        <button type="submit" disabled={!selectedLayout || (selectedLayout === 'Other' && !customLayoutInfo)}>
+        <button type="submit" className="styled-submit" disabled={!selectedLayout || (selectedLayout === 'Other' && !customLayoutInfo)}>
           Generate Website
         </button>
       </form>

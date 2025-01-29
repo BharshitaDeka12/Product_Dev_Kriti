@@ -11,6 +11,10 @@ const colorPalettes = [
   ['#14213D', '#FCA311', '#E5E5E5', '#000000'],
   ['#2EC4B6', '#FF9F1C', '#E71D36', '#FFBF69'],
   ['#EF476F', '#FFD166', '#06D6A0', '#118AB2'],
+  ['#354f52', '#52796f', '#52796f', '#cad2c5'],
+  ['#335c67', '#fff3b0', '#e09f3e', '#9e2a2b'],
+  ['#450920', '#a53860', '#da627d', '#ffa5ab'],
+  ['#0b132b', '#1c2541', '#3a506b', '#5bc0be'],
 ];
 
 const ColorPalettePage = ({ setSelectedColorPalette }) => {
