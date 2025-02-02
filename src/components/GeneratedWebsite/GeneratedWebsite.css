@@ -1,0 +1,147 @@
+.generated-website-container {
+  margin: 0;
+  padding: 0%;
+  display: flex;
+  height: 100vh;
+}
+
+/* Left: Website Preview */
+.website-preview-container {
+  width: 50%;
+  border-right: 2px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.website-preview {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Right: Code Display */
+.code-container {
+  width: 50%;
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: white;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.code-container h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #f8f9fa;
+}
+
+.code-block {
+  white-space: pre-wrap;
+  overflow-x: auto;
+  background-color: #2d2d2d;
+  padding: 15px;
+  border-radius: 5px;
+  width: 100%;
+  height: 80%;
+  font-size: 14px;
+  color: #e4e4e4;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Buttons */
+.styled-button {
+  margin: 10px;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.styled-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Reprompt Panel */
+.reprompt-panel {
+  margin-top: 15px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.reprompt-panel input {
+  padding: 12px;
+  width: 60%;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.reprompt-panel input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.reprompt-panel button {
+  padding: 12px 18px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reprompt-panel button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .generated-website-container {
+      flex-direction: column;
+  }
+
+  .website-preview-container {
+      width: 100%;
+      height: 50vh;
+      border-right: none;
+      border-bottom: 2px solid #ccc;
+  }
+
+  .code-container {
+      width: 100%;
+      height: 50vh;
+  }
+
+  .reprompt-panel {
+      flex-direction: column;
+  }
+
+  .reprompt-panel input {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+}

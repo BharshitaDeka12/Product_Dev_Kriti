@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DesignPage.css';
 
-const DesignPage = ({ selectedColorPalette }) => {
+const DesignPage = () => {
   const navigate = useNavigate();
   const [selectedLayout, setSelectedLayout] = useState('');
   const [customLayoutInfo, setCustomLayoutInfo] = useState('');
@@ -16,11 +16,21 @@ const DesignPage = ({ selectedColorPalette }) => {
     if (storedPalette) {
       setPalette(storedPalette);
     }
-  }, [selectedColorPalette]);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Layout: ${selectedLayout === 'Other' ? customLayoutInfo : selectedLayout}, Palette: ${palette}, Font: ${selectedFont}`);
+    if (!selectedLayout) {
+      alert("Please select a layout before generating the website.");
+      return;
+    }
+    navigate('/generated-website', {
+      state: {
+        layout: selectedLayout === 'Other' ? customLayoutInfo : selectedLayout,
+        palette,
+        font: selectedFont
+      }
+    });
   };
 
   return (
@@ -33,7 +43,6 @@ const DesignPage = ({ selectedColorPalette }) => {
         </button>
       </div>
 
-      {/* Font Selection */}
       <div className="form-section">
         <label htmlFor="fontFamily">Choose a font family:</label>
         <select id="fontFamily" className="styled-select" value={selectedFont} onChange={(e) => setSelectedFont(e.target.value)}>
